@@ -67,7 +67,7 @@
               <p>© 2019 <span class="text-primary">Doberman </span>All rights reserved.</p>
             </div>
             <div class="col-sm-6 text-right">
-              <p><a href="#" target="_blank">Cebuana</a></p>
+              <p><a href="#" target="_blank">doberman</a></p>
             </div>
           </div>
         </div>

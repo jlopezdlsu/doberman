@@ -84,7 +84,7 @@ jQuery(document).ready(function($) {
 				<!-- Product main img -->
 
 				<?php
-				$query = $connect->prepare("SELECT * FROM tbl_product WHERE productID = :product_id");
+				$query = $connect->prepare("SELECT product.productID,product.productName, product.quantity, product.price, product.ram, product.storage, product.camera, product.processor, product.description, product.shortDescription, category.categoryID, product.categoryID, category.categoryName  FROM tbl_product product INNER JOIN tbl_category category ON category.categoryID = product.categoryID WHERE productID = :product_id");
 				$query->execute(['product_id' => $_GET['p']]);
 				while ($row = $query->fetch()){
 
@@ -162,7 +162,7 @@ jQuery(document).ready(function($) {
 					</ul>
 					<ul class="product-links">
 					<li>Category:</li>
-					<li><a href="#">'.$row['categoryID'].'</a></li>
+					<li><a href="#">'.$row['categoryName'].'</a></li>
 					</ul>
 					<ul class="product-links">
 					<li>Share:</li>
