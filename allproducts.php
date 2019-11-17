@@ -27,8 +27,8 @@ include('conn.php'); //Database Connection
     <br/>
     <br/>
     <div align="right" class="top_search">
-      <input type="text" class="search_input" id="search_query" name="search_query" placeholder="Advanced Search"/>
-      <input id="search_button" type="button" value="Search" class="search_bt" name="search"/>
+      <input type="text" class="search_input form-control " id="search_query" name="search_query" placeholder="Advanced Search"/>
+      <input id="search_button" type="button" value="Search" class="search_bt btn btn-primary" name="search"/>
     </div>
     <br/>
     <br/>

@@ -2040,6 +2040,7 @@ background: linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10
 .product-details .add-to-cart .qty-label .input-number {
   width: 90px;
   display: inline-block;
+  height: 30px;
 }
 
 .product-details .product-btns li {
@@ -2798,3 +2799,8 @@ footer.main-footer .copyrights a{color:rgb(19, 18, 24)}@media (max-width: 991px)
 footer.main-footer .page-links{padding-bottom:70px}
 footer.main-footer .page-links div[class*='col-']{margin-bottom:30px}}@media (max-width: 768px){
 footer.main-footer .copyrights div[class*='col-']{text-align:center !important;margin-bottom:10px}}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}

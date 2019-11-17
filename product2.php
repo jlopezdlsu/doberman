@@ -128,7 +128,31 @@ jQuery(document).ready(function($) {
 					</div>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
-
+					<form method="post" class="submitpro">
+						<div class="add-to-cart">
+						<div class="qty-label">
+							Quantity
+							<p>
+					      </p><div class="input-group">
+					          <span class="input-group-btn">
+					              <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+					                  <span class="fa fa-minus"></span>
+					              </button>
+					          </span>
+					          <input type="text" name="quant[1]" class="form-control input-number pro-qty" value="1" min="1" max="10">
+					          <span class="input-group-btn">
+					              <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+					                  <span class="fa fa-plus"></span>
+					              </button>
+					          </span>
+					      </div>
+					    <p>
+						</div>
+						<div class="btn-group" style="margin-left: 25px; margin-top: 15px">
+						<button class="add-to-cart-btn pc_data" id="'.$row['productID'].'" data-dataid='.$row['productID'].' ><i class="fa fa-shopping-cart"></i> add to cart</button>
+						</div>
+						</div>
+					</form>
 					<form method="post" action="checkout.php?p='.$row['productID'].'#!">
 						<div class="add-to-cart">
 						<div class="btn-group" style="margin-left: 25px; margin-top: 15px">
