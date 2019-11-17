@@ -88,7 +88,7 @@ if (isset($_POST["action"])) {
 			$' . $row['price'] . '
 			<span>$' . $row['price'] . '</span>
 			</div>
-			<a class="add-to-cart" href="">ADD TO CART</a>
+			
 			</div>
 			</div>
 			</div>';
