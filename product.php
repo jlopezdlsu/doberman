@@ -1,6 +1,7 @@
 <?php
 
 //header.php
+session_start();
 
 //include "header.php";
 include ('conn.php');
@@ -133,6 +134,13 @@ jQuery(document).ready(function($) {
 						<div class="add-to-cart">
 						<div class="btn-group" style="margin-left: 25px; margin-top: 15px">
 						<button class="add-to-cart-btn pc_data" id="'.$row['productID'].'" data-dataid='.$row['productID'].' ><i class="fa fa-shopping-cart"></i> Buy</button>
+						</div>
+						</div>
+					</form>
+					<form method="post" id="add-to-cart-form" action="addtocart.php?p='.$row['productID'].'#!">
+						<div class="add-to-cart">
+						<div class="btn-group" style="margin-left: 25px; margin-top: 15px">
+						<button class="add-to-cart-btn pc_data" type="submit" id="'.$row['productID'].'" data-dataid='.$row['productID'].' ><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 						</div>
 						</div>
 					</form>
@@ -271,7 +279,7 @@ jQuery(document).ready(function($) {
 					</div>
 					<!-- /Rating -->
 					<!-- Reviews -->
-					<div class="col-md-6">
+					<div class="col-md-9">
 					<div id="reviews">
 					<ul class="reviews">
 					<li>
@@ -323,39 +331,10 @@ jQuery(document).ready(function($) {
 					</div>
 					</li>
 					</ul>
-					<ul class="reviews-pagination">
-					<li class="active">1</li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-					</ul>
+
 					</div>
 					</div>
 					<!-- /Reviews -->
-
-					<!-- Review Form -->
-					<div class="col-md-3 mainn">
-					<div id="review-form">
-					<form class="review-form">
-					<input class="input" type="text" placeholder="Your Name">
-					<input class="input" type="email" placeholder="Your Email">
-					<textarea class="input" placeholder="Your Review"></textarea>
-					<div class="input-rating">
-					<span>Your Rating: </span>
-					<div class="stars">
-					<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-					<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-					<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-					<input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-					<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
-					</div>
-					</div>
-					<button class="primary-btn">Submit</button>
-					</form>
-					</div>
-					</div>
-					<!-- /Review Form -->
 					</div>
 					</div>
 					<!-- /tab3  -->
@@ -578,6 +557,41 @@ $(".input-number").keydown(function (e) {
 										}
 								});
 						}
+				});
+
+				//ADD TO CART
+				$('#add-to-cart-form').on('submit',function(e){
+					e.preventDefault();
+					var product_num = $(this).find('.pc_data').data('dataid');
+					var product_qty = $(this).find('.pro-qty').val();
+					//alert("product Num = "+product_num+" Product Qty "+product_qty);
+					if(product_num == '' || product_qty == ''){
+							alert("Data Key Not Found");
+							console.log("Data Key Not Found");
+					}
+					else{
+							$.ajax({
+									type: "POST",
+									url: "ajax/add-to-cart.php",
+									data: { 'product_num' : product_num, 'product_qty' : product_qty },
+									success: function (response) {
+										console.log(response);
+											// var get_val = JSON.parse(response);
+											// if(get_val.status == 100){
+											// 		alert(get_val.msg);
+											// 		console.log(get_val.msg);
+											// 		location.reload();
+											// }
+											// else if(get_val.status == 103){
+											// 		alert(get_val.msg);
+											// 		console.log(get_val.msg);
+											// }
+											// else{
+											// 		console.log(get_val.msg);
+											// }
+									}
+							});
+					}
 				});
 		});
 
