@@ -15,6 +15,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['success']))
           <a class="p-2 text-dark" href="#">Contact Us</a>
           <a class="p-2 text-dark" href="#">Hi <?php echo $_SESSION['username'] ?></a>
           <a class="p-2 text-dark" href="my-cart.php"> <i class="fa fa-shopping-cart"></i></a>
+          <a class="p-2 text-dark" href="logout.php">Logout</a>
         </nav>
       </div>
     </div>
