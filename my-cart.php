@@ -1,3 +1,5 @@
+<?php include('server.php') ?>
+
 <?php
 include ('auth.php');
 include ('connmysqli.php');

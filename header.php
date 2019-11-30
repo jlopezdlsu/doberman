@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 if(isset($_SESSION['username']) && isset($_SESSION['success']))
 {?>
@@ -33,8 +32,8 @@ else{
         <nav class="my-2 my-md-0 mr-md-3">
           <a class="p-2 text-dark" href="allproducts.php">Products</a>
           <a class="p-2 text-dark" href="#">Help</a>
-          <a class="p-2 text-dark" href="#">Login</a>
-          <a class="p-2 text-dark" href="#">Sign Up</a>
+          <a class="p-2 text-dark" href="login.php">Login</a>
+          <a class="p-2 text-dark" href="register.php">Sign Up</a>
         </nav>
       </div>
     </div>

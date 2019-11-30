@@ -18,9 +18,7 @@
 </head>
 
 <body>
-  <script
-  src="https://www.paypal.com/sdk/js?client-id=AQh6WOvdT57cij6FGemJZqkOpXzCtYPW-Zhmjjqsmm_PfgZg60jhHzRAaxEF0S28cTrsMSq9KmjzSv_D&currency=PHP"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
-</script>
+
 	<?php include('header.php') ?>
 
   <div class="section" style="margin-top:100px">

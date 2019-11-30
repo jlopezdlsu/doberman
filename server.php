@@ -42,12 +42,13 @@ if (isset($_POST['reg_user'])) {
   	$password = md5($password_1);//encrypt the password before saving in the database
   	$query = "INSERT INTO tbl_users (username, emailAddress, password, userType)
   			  VALUES('$username', '$email', '$password', $userType)";
+
   	if(mysqli_query($db, $query)){
     $_SESSION['userID'] = mysqli_insert_id($db);
   	$_SESSION['username'] = $username;
     $_SESSION['role'] = $userType;
   	$_SESSION['success'] = "You are now logged in.";
-  	header('location: success_register.php');
+  	header('Location: success_register.php');
   }
   else {
     mysqli_error($db);

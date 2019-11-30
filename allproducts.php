@@ -1,3 +1,5 @@
+<?php include('server.php') ?>
+
 <?php
 include('conn.php'); //Database Connection
 ?>

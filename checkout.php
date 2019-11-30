@@ -1,3 +1,5 @@
+<?php include('server.php') ?>
+
 <?php
 
 //header.php
