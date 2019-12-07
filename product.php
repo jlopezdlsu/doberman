@@ -561,6 +561,7 @@ $(".input-number").keydown(function (e) {
 
 				//ADD TO CART
 				$('#add-to-cart-form').on('submit',function(e){
+
 					e.preventDefault();
 					var product_num = $(this).find('.pc_data').data('dataid');
 					var product_qty = $(this).find('.pro-qty').val();
@@ -575,7 +576,10 @@ $(".input-number").keydown(function (e) {
 									url: "ajax/add-to-cart.php",
 									data: { 'product_num' : product_num, 'product_qty' : product_qty },
 									success: function (response) {
-										console.log(response);
+										var values = $.parseJSON(response);
+										if(values.status == 107){
+											window.location.href = "login.php";
+										}
 											// var get_val = JSON.parse(response);
 											// if(get_val.status == 100){
 											// 		alert(get_val.msg);
@@ -589,7 +593,10 @@ $(".input-number").keydown(function (e) {
 											// else{
 											// 		console.log(get_val.msg);
 											// }
-									}
+									},
+								 error: function(response){
+
+								 }
 							});
 					}
 				});

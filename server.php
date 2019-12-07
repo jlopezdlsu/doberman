@@ -71,12 +71,18 @@ if (isset($_POST['login_user'])) {
     $query = "SELECT * FROM tbl_users WHERE username='$username' AND password='$password' AND userType = '2'";
     $results = mysqli_query($db, $query);
     $get_info = mysqli_fetch_assoc($results);
+
     if (mysqli_num_rows($results) == 1) {
       $_SESSION['userID'] = $get_info['userID'];
       $_SESSION['username'] = $username;
-      $_SESSION['role'] = $get_info['role'];
+      $_SESSION['role'] = $get_info['userType'];
       $_SESSION['success'] = "You are now logged in.";
-      header('location: index.php');
+      if(isset($_SESSION['LOGIN_REFERRED']) && $_SESSION['LOGIN_REFERRED']){
+        header("Location:". $_SESSION['LOGIN_REFERRED']);
+        $_SESSION['LOGIN_REFERRED'] = null;
+      }else{
+        header('location: index.php');
+      }
     }else {
       array_push($errors, "Wrong username/password combination.");
     }

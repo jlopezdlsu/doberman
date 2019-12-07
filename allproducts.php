@@ -100,7 +100,7 @@ include('conn.php'); //Database Connection
             <?php
 
             $query = "
-            SELECT * FROM tbl_product WHERE ram <> '0' AND status = '1'ORDER BY ram DESC
+            SELECT * FROM tbl_product WHERE ram <> '0' AND status = '1' ORDER BY ram DESC
             ";
             $statement = $connect->prepare($query);
             $statement->execute();
