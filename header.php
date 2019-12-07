@@ -12,8 +12,10 @@ if(isset($_SESSION['username']) && isset($_SESSION['success']))
           <a class="p-2 text-dark" href="allproducts.php">Products</a>
           <a class="p-2 text-dark" href="#">Help</a>
           <a class="p-2 text-dark" href="#">Contact Us</a>
-          <a class="p-2 text-dark" href="#">Hi <?php echo $_SESSION['username'] ?></a>
           <a class="p-2 text-dark" href="my-cart.php"> <i class="fa fa-shopping-cart"></i></a>
+          <a class="p-2 text-dark" href="profile.php">Hi <?php echo $_SESSION['username'] ?></a>
+          <a class="p-2 text-dark" href="changePassword.php">Change Password</a>
+          <a class="p-2 text-dark" href="history.php">Transaction History</a>
           <a class="p-2 text-dark" href="logout.php">Logout</a>
         </nav>
       </div>
