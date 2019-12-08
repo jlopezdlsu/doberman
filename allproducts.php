@@ -29,12 +29,14 @@ include('conn.php'); //Database Connection
     <br/>
     <br/>
     <div align="right" class="top_search">
-      <input type="text" class="search_input form-control " id="search_query" name="search_query" placeholder="Advanced Search"/>
-      <input id="search_button" type="button" value="Search" class="search_bt btn btn-primary" name="search"/>
+      <input type="text" class="search_input form-control " id="search_query" name="search_query" placeholder="Advanced Search" style="width:80%;float:left"/>
+      <input id="search_button" type="button" value="Search" class="search_bt btn btn-primary" name="search" style="width:18%;float:left;margin-left:10px"/>
     </div>
     <br/>
     <br/>
 
+    <br/>
+    <br/>
 
     <div class="row">
       <div class="col-md-3">
@@ -42,7 +44,7 @@ include('conn.php'); //Database Connection
           <h3>Price</h3>
           <input type="hidden" id="min_price_hide" value="0" />
           <input type="hidden" id="max_price_hide" value="2000" />
-          <p id="price_show">$100 - $2000</p>
+          <p id="price_show">PHP 100 - PHP 2000</p>
           <div id="price_range"></div>
         </div>
 
@@ -158,7 +160,8 @@ include('conn.php'); //Database Connection
   </div>
   <?php include('footer.php') ?>
   <script src="js/jquery-1.11.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
   <script src="js/jquery-ui.js"></script>
 

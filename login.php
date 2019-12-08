@@ -15,48 +15,101 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link href="css/jquery-ui.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
+	<style media="screen">
+	.login-container{
+		margin-top: 5%;
+		margin-bottom: 5%;
+	}
+	.login-form-1{
+		padding: 5%;
+		box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+	}
+	.login-form-1 h3{
+		text-align: center;
+		color: #333;
+	}
+	.login-form-2{
+		padding: 5%;
+		background: #0062cc;
+		box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+	}
+	.login-form-2 h3{
+		text-align: center;
+		color: #fff;
+	}
+	.login-container form{
+		padding: 10%;
+	}
+	.btnSubmit
+	{
+		width: 50%;
+		border-radius: 1rem;
+		padding: 1.5%;
+		border: none;
+		cursor: pointer;
+	}
+	.login-form-1 .btnSubmit{
+		font-weight: 600;
+		color: #fff;
+		background-color: #0062cc;
+	}
+	.login-form-2 .btnSubmit{
+		font-weight: 600;
+		color: #0062cc;
+		background-color: #fff;
+	}
+	.login-form-2 .ForgetPwd{
+		color: #fff;
+		font-weight: 600;
+		text-decoration: none;
+	}
+	.login-form-1 .ForgetPwd{
+		color: #0062cc;
+		font-weight: 600;
+		text-decoration: none;
+	}
+	.error{
+		color: red;
+		font-weight: bold;
+	}
+
+	</style>
 </head>
 
 <body>
-  <script
-  src="https://www.paypal.com/sdk/js?client-id=AQh6WOvdT57cij6FGemJZqkOpXzCtYPW-Zhmjjqsmm_PfgZg60jhHzRAaxEF0S28cTrsMSq9KmjzSv_D&currency=PHP"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
-</script>
-	<?php include('header.php') ?>
+<?php include('header.php') ?>
 
-  <div class="section" style="margin-top:100px">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="header">
-            <h2>Doberman Login</h2>
-          </div>
-        </div>
+<div class="section" style="margin-top:50px">
+	<div class="container login-container">
+		<div class="row">
+			<div class="offset-3 col-lg-6 login-form-1">
+				<div class="header">
+					<h2 style="text-align:center">Login</h2>
+				</div>
+				<form method="post" action="login.php">
+					<?php include('errors.php'); ?>
+					<div class="form-group">
+						<input type="text" name="username" class="form-control" placeholder="Username">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="Password" value="" name="password"/>
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary float-right" value="Login" name="login_user"/>
+					</div>
+					<div class="form-group">
+						<p>
+							Not yet a member? <a href="register.php">Sign up</a>
+						</p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 
-        <form method="post" action="login.php">
-          <?php include('errors.php'); ?>
-          <div class="input-group">
-            <label>Username</label>
-            <input type="text" name="username" >
-          </div>
-          <div class="input-group">
-            <label>Password</label>
-            <input type="password" name="password">
-          </div>
-
-          <div class="input-group">
-            <button type="submit" class="btn" name="login_user">Login</button>
-          </div>
-          <p>
-            Not yet a member? <a href="register.php">Sign up</a>
-          </p>
-        </form>
-      </div>
-
-    </div>
-  </div>
-
-	<!-- FOOTER -->
-	<?php include('footer.php') ?>
+<!-- FOOTER -->
+<?php include('footer.php') ?>
 </body>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

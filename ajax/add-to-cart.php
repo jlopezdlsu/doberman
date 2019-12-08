@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $product_qty = 1;
 
       //CHECK IF PRODUCT IS EXISTING IN THE CART
-      $selectQry = "SELECT productID FROM tbl_order WHERE productID = '$product_num'";
+      $selectQry = "SELECT productID FROM tbl_order WHERE productID = '$product_num' AND buyerID = '$userID' AND paymentID is null";
       $result = mysqli_query($db, $selectQry);
       $data = mysqli_fetch_assoc($result);
 

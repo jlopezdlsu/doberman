@@ -74,21 +74,16 @@ if (isset($_POST["action"])) {
 			<img class="pic-1" src="image/' . getImage($row['productID'],$connect) . '">
 			<img class="pic-2" src="image/' . getImage($row['productID'],$connect) . '">
 			</a>
-			<ul class="social">
-			<li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-			<li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-			<li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-			</ul>
+
 			<span class="product-new-label">New</span>
-			<span class="product-discount-label">-10%</span>
 			</div>
 			<div class="product-content">
 			<h3 class="title"><a href="product.php?p='. $row['productID'] .'">' . $row['productName'] . '</a></h3>
 			<div class="price">
-			$' . $row['price'] . '
-			<span>$' . $row['price'] . '</span>
+			PHP ' . $row['price'] . '
+
 			</div>
-			
+
 			</div>
 			</div>
 			</div>';

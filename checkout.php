@@ -91,7 +91,7 @@ jQuery(document).ready(function($) {
 				$productName = $row['productName'];
 				$price = $row['price'];
 				$merchant = $row['merchantID'];
-				$description = $row['description'];
+				$description = $row['shortDescription'];
 				$price = $row['price'];
 				$subtotal = 1 * $price;
 				$total = $subtotal;
@@ -108,39 +108,28 @@ jQuery(document).ready(function($) {
 							<table class="table v-set">
 								<thead>
 									<tr>
-										<th scope="col">No</th>
 										<th scope="col">Product</th>
 										<th scope="col">Detail</th>
 										<th scope="col">Quantity</th>
 										<th scope="col">Price</th>
 										<th scope="col">Subtotal</th>
-										<th scope="col">Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>
-											<img src="" class="box-image-set-2">
-										</td>
-										<td><img src="image/<?php getImage($productID,$connect) ?>" alt=""></td>
 										<td><?php echo $productName; ?></td>
 										<td><?php echo $description; ?></td>
 										<td>1</td>
-										<td><?php echo $price; ?></td>
-										<td><?php echo $subtotal; ?></td>
-										<td>
-											<button class="btn btn-sm btn-danger rm-val">
-												<span><i class="far fa-trash-alt"></i></span>
-												<span>Remove</span>
-											</button>
-										</td>
+										<td>PHP <?php echo $price; ?></td>
+										<td>PHP <?php echo number_format($subtotal,2); ?></td>
+
 									</tr>
 
 								</tbody>
 								<tfoot>
 									<tr>
-										<td colspan="6"><b> Total Amount : </b> </td>
-										<td><?php echo $total; ?></td>
+										<td colspan="4"><b> Total Amount : </b> </td>
+										<td>PHP  <?php echo number_format($total,2); ?></td>
 									</tr>
 								</tfoot>
 							</table>
@@ -170,7 +159,8 @@ jQuery(document).ready(function($) {
 <?php include('footer.php') ?>
 </body>
 <script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
 <script src="js/jquery-ui.js"></script>
 </html>

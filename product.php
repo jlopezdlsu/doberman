@@ -124,20 +124,20 @@ jQuery(document).ready(function($) {
 					<a class="review-link" href="#review-form">10 Review(s) | Add your review</a>
 					</div>
 					<div>
-					<h3 class="product-price">$'.$row['price'].'</h3>
+					<h3 class="product-price">PHP '.$row['price'].'</h3>
 					<span class="product-available">In Stock</span>
 					</div>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
 
-					<form method="post" action="checkout.php?p='.$row['productID'].'#!">
+					<form method="post" action="checkout.php?p='.$row['productID'].'#!" style="width:30%;float:left">
 						<div class="add-to-cart">
 						<div class="btn-group" style="margin-left: 25px; margin-top: 15px">
-						<button class="add-to-cart-btn pc_data" id="'.$row['productID'].'" data-dataid='.$row['productID'].' ><i class="fa fa-shopping-cart"></i> Buy</button>
+						<button class="add-to-cart-btn pc_data" id="'.$row['productID'].'" data-dataid='.$row['productID'].' ><i class="fa fa-money"></i> Buy</button>
 						</div>
 						</div>
 					</form>
-					<form method="post" id="add-to-cart-form" action="addtocart.php?p='.$row['productID'].'#!">
+					<form method="post" id="add-to-cart-form" action="addtocart.php?p='.$row['productID'].'#!" style="width:70%;float:left">
 						<div class="add-to-cart">
 						<div class="btn-group" style="margin-left: 25px; margin-top: 15px">
 						<button class="add-to-cart-btn pc_data" type="submit" id="'.$row['productID'].'" data-dataid='.$row['productID'].' ><i class="fa fa-shopping-cart"></i> Add to Cart</button>
@@ -391,14 +391,14 @@ jQuery(document).ready(function($) {
 					<div class='product-img'>
 					<img src='image/". getImage($row['productID'],$connect) ."' style='max-height: 170px;' alt='' class='img-responsive'>
 					<div class='product-label'>
-					<span class='sale'>-30%</span>
+
 					<span class='new'>NEW</span>
 					</div>
 					</div></a>
 					<div class='product-body'>
 					<p class='product-category'>$pro_cat</p>
 					<h3 class='product-name header-cart-item-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
-					<h4 class='product-price header-cart-item-info'>$pro_price<del class='product-old-price'>$990.00</del></h4>
+					<h4 class='product-price header-cart-item-info'>PHP $pro_price</h4>
 					<div class='product-rating'>
 					<i class='fa fa-star'></i>
 					<i class='fa fa-star'></i>
@@ -406,11 +406,7 @@ jQuery(document).ready(function($) {
 					<i class='fa fa-star'></i>
 					<i class='fa fa-star'></i>
 					</div>
-					<div class='product-btns'>
-					<button class='add-to-wishlist'><i class='fa fa-heart-o'></i><span class='tooltipp'>add to wishlist</span></button>
-					<button class='add-to-compare'><i class='fa fa-exchange'></i><span class='tooltipp'>add to compare</span></button>
-					<button class='quick-view'><i class='fa fa-eye'></i><span class='tooltipp'>quick view</span></button>
-					</div>
+
 					</div>
 					<div class='add-to-cart'>
 					<button pid='$pro_id' id='product' class='add-to-cart-btn block2-btn-towishlist' href='#'><i class='fa fa-shopping-cart'></i> add to cart</button>
@@ -445,7 +441,9 @@ jQuery(document).ready(function($) {
 	<?php include('footer.php') ?>
 </body>
 <script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
 
 <script src="js/jquery-ui.js"></script>
 </html>
@@ -580,6 +578,7 @@ $(".input-number").keydown(function (e) {
 										if(values.status == 107){
 											window.location.href = "login.php";
 										}
+										alert('Product added to cart');
 											// var get_val = JSON.parse(response);
 											// if(get_val.status == 100){
 											// 		alert(get_val.msg);

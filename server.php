@@ -48,7 +48,7 @@ if (isset($_POST['reg_user'])) {
   	$_SESSION['username'] = $username;
     $_SESSION['role'] = $userType;
   	$_SESSION['success'] = "You have successfully registered";
-  	header('Location: login.php');
+  	header('Location: index.php');
   }
   else {
     mysqli_error($db);

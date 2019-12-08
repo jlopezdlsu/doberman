@@ -1,4 +1,3 @@
-<?php include('server.php') ?>
 
 <?php
 include ('auth.php');
@@ -87,42 +86,56 @@ jQuery(document).ready(function($) {
                               <table class="table v-set">
                                   <thead>
                                       <tr>
-                                          <th scope="col">ORDER ID</th>
-                                          <th scope="col">PRODUCT ID</th>
-                                          <th scope="col">QUANTITY</th>
+                                          <th scope="col">Product Name</th>
+                                          <th scope="col">Detail</th>
+                                          <th scope="col">Quantity</th>
                                           <th scope="col">Price</th>
-
+                                          <th scope="col">Subtotal</th>
                                       </tr>
                                   </thead>
                                   <tbody>
                                     <?php
 
                                     $id = $_SESSION['userID'];
-                                    $query = "SELECT tbl_order.*, tbl_product.productID, tbl_product.price FROM tbl_order LEFT JOIN tbl_product ON tbl_order.productID = tbl_product.productID WHERE buyerID = '$id' AND paymentID is null";
+                                    $query = "SELECT tbl_order.*, tbl_product.productID, tbl_product.price ,tbl_product.productName,tbl_product.shortDescription FROM tbl_order LEFT JOIN tbl_product ON tbl_order.productID = tbl_product.productID WHERE buyerID = '$id' AND paymentID is null";
                                     $result = mysqli_query($db, $query);
 
                                     $headers = $col = "";
                                     $total = 0;
+                                    $grandTotal = 0;
                                     while($row = mysqli_fetch_assoc($result))
                                     {
                                       $orderID = $row['orderID'];
                                       $productID = $row['productID'];
+                                      $productName = $row['productName'];
                                       $userID = $row['buyerID'];
                                       $quantity = $row['quantity'];
                                       $price = $row['price'];
-                                      $total += $price * $quantity;
-
-                                      $col .= "<tr><td> {$orderID} </td><td> {$productID} </td><td> {$quantity} </td><td> {$price} </td></tr>";
+                                      $description = $row['shortDescription'];
+                                      $grandTotal += $total += $price * $quantity;
+                                      $total = number_format($total,2);
+                                      $col .= "<tr><td> {$productName} </td><td> {$description} </td><td> {$quantity} </td><td>PHP  {$price} </td><td>PHP  {$total} </td></tr>";
+                                      $total = 0;
                                     }
 
                                     echo "$col";
                                     ?>
-
                                   </tbody>
                                   <tfoot>
+                                    <tr>
+                                      <td colspan="3">
+                                        <b>Voucher Code</b>
+                                      </td>
+                                      <td style="width:30%" colspan="2">
+                                        <input type="text" name="" value="" class="form-control" style="width:70%;float:left">
+                                        <button type="button" name="button" class="btn btn-primary" style="width:25%;float:left;margin-left:10px;">Apply</button>
+                                      </td>
+                                    </tr>
                                       <tr>
-                                          <td colspan="3"><b> Total Amount : </b> </td>
-                                          <td><?php echo $total; ?></td>
+                                          <td colspan="4"><b>PHP  Total Amount : </b> </td>
+                                          <td>PHP <?php echo number_format($grandTotal,2); ?>
+
+                                          </td>
                                       </tr>
                                   </tfoot>
                               </table>
@@ -149,7 +162,9 @@ jQuery(document).ready(function($) {
 	<?php include('footer.php') ?>
 </body>
 <script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
 
 <script src="js/jquery-ui.js"></script>
 </html>
