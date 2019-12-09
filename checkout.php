@@ -85,7 +85,6 @@ jQuery(document).ready(function($) {
 		<div class="row">
 			<?php
 			$query = $connect->prepare("SELECT product.productID,product.productName, product.quantity, product.price, product.ram, product.storage, product.camera, product.processor, product.description, product.shortDescription,product.merchantID, category.categoryID, product.categoryID, category.categoryName FROM tbl_product product INNER JOIN tbl_category category ON category.categoryID = product.categoryID WHERE productID = :product_id");
-
 			$query->execute(['product_id' => $_GET['p']]);
 			while ($row = $query->fetch()){
 				$productName = $row['productName'];
@@ -97,6 +96,7 @@ jQuery(document).ready(function($) {
 				$total = $subtotal;
 				$productID = $row['productID'];
 			}
+
 			?>
 			<div class="col-lg-12">
 				<div class="card">
@@ -147,7 +147,6 @@ jQuery(document).ready(function($) {
 			<div class="col-lg-3">
 				<div id="paypal-button-container"></div>
 				<input type="hidden" name="" value="<?php echo $total; ?>" id="total">
-				<input type="hidden" name="" value="<?php echo $productID; ?>" id="id">
 				<input type="hidden" name="" value="<?php echo $merchant; ?>" id="merchant">
 
 			</div>
@@ -168,11 +167,7 @@ jQuery(document).ready(function($) {
 
 <script>
 var total = $("#total").val();
-var id = $("#id").val();
-var merchant = $("#merchant").val();
 paypal.Buttons({
-
-
 	createOrder: function(data, actions) {
 		return actions.order.create({
 			purchase_units: [{
@@ -194,9 +189,8 @@ paypal.Buttons({
 				},
 				body: JSON.stringify({
 					orderID: data.orderID,
-					merchantID: merchant,
 					total: total,
-					productID : id
+					productID : <? echo array($orderID) ?>
 				})
 			});
 		});

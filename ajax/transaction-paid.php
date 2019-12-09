@@ -20,25 +20,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     } else {
 
       $user = $_SESSION['userID'];
-      $merchantID = $decoded['merchantID'];
       $total = $decoded['total'];
-      $productID = $decoded['productID'];
+      $orderIDs = implode(',', array_map('intval', $decoded['orderIDs']));
       $paymentType = 'paypal';
       $code = $decoded['orderID'];
 
-      $query = "INSERT INTO tbl_payment (merchantID, buyerID, total, paymentType, paymentCode)
-      VALUES('$merchantID', '$user', '$total', '$paymentType','$code')";
+      $query = "INSERT INTO tbl_payment (buyerID, total, paymentType, paymentCode)
+      VALUES( '$user', '$total', '$paymentType','$code')";
       //INSERT PAYMENT
       if(mysqli_query($db, $query)){
         $paymentID =  mysqli_insert_id($db);
-        
         //UPDATE ORDER WITH PAYMENT ID
-        $updateQuery = "UPDATE tbl_order SET paymentID = '$paymentID' WHERE productID = '$productID'";
+        $updateQuery = "UPDATE tbl_order SET paymentID = '$paymentID' WHERE orderID IN ($orderIDs)";
         if(mysqli_query($db, $updateQuery)){
           $json['status'] = 105;
           $json['msg'] = "PAID";
+        }else{
+          $json['status'] = 105;
+          $json['msg'] =  mysqli_error($db);
         }
-      }else{
+
+      }
+      else{
         $json['status'] = 500;
         $json['msg'] = mysqli_error($db);
       }

@@ -1,0 +1,6 @@
+{
+    "name": "regina/doberman",
+    "description": "Composer",
+    "minimum-stability": "dev",
+    "require": {}
+}

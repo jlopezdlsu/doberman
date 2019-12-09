@@ -130,10 +130,10 @@ jQuery(document).ready(function($) {
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
 
-					<form method="post" action="checkout.php?p='.$row['productID'].'#!" style="width:30%;float:left">
+					<form method="post" id="buy-form" action="checkout.php?p='.$row['productID'].'#!" style="width:30%;float:left">
 						<div class="add-to-cart">
 						<div class="btn-group" style="margin-left: 25px; margin-top: 15px">
-						<button class="add-to-cart-btn pc_data" id="'.$row['productID'].'" data-dataid='.$row['productID'].' ><i class="fa fa-money"></i> Buy</button>
+						<button class="add-to-cart-btn pc_data" type="submit" id="'.$row['productID'].'" data-dataid='.$row['productID'].' ><i class="fa fa-money"></i> Buy</button>
 						</div>
 						</div>
 					</form>
@@ -592,6 +592,35 @@ $(".input-number").keydown(function (e) {
 											// else{
 											// 		console.log(get_val.msg);
 											// }
+									},
+								 error: function(response){
+
+								 }
+							});
+					}
+				});
+
+				$('#buy-form').on('submit',function(e){
+
+					e.preventDefault();
+					var product_num = $(this).find('.pc_data').data('dataid');
+					var product_qty = $(this).find('.pro-qty').val();
+					//alert("product Num = "+product_num+" Product Qty "+product_qty);
+					if(product_num == '' || product_qty == ''){
+							alert("Data Key Not Found");
+							console.log("Data Key Not Found");
+					}
+					else{
+							$.ajax({
+									type: "POST",
+									url: "ajax/add-to-cart.php",
+									data: { 'product_num' : product_num, 'product_qty' : product_qty },
+									success: function (response) {
+										var values = $.parseJSON(response);
+										if(values.status == 107){
+											window.location.href = "login.php";
+										}
+										window.location.href = "my-cart.php";
 									},
 								 error: function(response){
 

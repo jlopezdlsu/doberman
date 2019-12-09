@@ -1,4 +1,3 @@
-
 <?php
 include ('auth.php');
 include ('connmysqli.php');
@@ -103,6 +102,7 @@ jQuery(document).ready(function($) {
                                     $headers = $col = "";
                                     $total = 0;
                                     $grandTotal = 0;
+                                    $ids = array();
                                     while($row = mysqli_fetch_assoc($result))
                                     {
                                       $orderID = $row['orderID'];
@@ -116,7 +116,9 @@ jQuery(document).ready(function($) {
                                       $total = number_format($total,2);
                                       $col .= "<tr><td> {$productName} </td><td> {$description} </td><td> {$quantity} </td><td>PHP  {$price} </td><td>PHP  {$total} </td></tr>";
                                       $total = 0;
+                                      array_push($ids,$orderID);
                                     }
+
 
                                     echo "$col";
                                     ?>
@@ -152,7 +154,7 @@ jQuery(document).ready(function($) {
         </div>
         <div class="col-lg-3">
           <div id="paypal-button-container"></div>
-          <input type="hidden" name="" value="<?php echo $total; ?>" id="total">
+          <input type="hidden" name="" value="<?php echo $grandTotal; ?>" id="total">
         </div>
       </div>
     </div>
@@ -179,6 +181,7 @@ jQuery(document).ready(function($) {
             amount: {
               value: total
             }
+
           }]
         });
       },
@@ -186,13 +189,15 @@ jQuery(document).ready(function($) {
         return actions.order.capture().then(function(details) {
           alert('Transaction completed by ' + details.payer.name.given_name);
           // Call your server to save the transaction
-          return fetch('/paypal-transaction-complete', {
+          return fetch('ajax/transaction-paid.php', {
             method: 'post',
             headers: {
               'content-type': 'application/json'
             },
             body: JSON.stringify({
-              orderID: data.orderID
+              orderID: data.orderID,
+              orderIDs: <?php echo json_encode($ids)  ?>,
+              total: total
             })
           });
         });
