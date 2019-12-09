@@ -26,29 +26,6 @@
   session_start();
   include('conn.php');
 
-  $query = "
-  SELECT * FROM tbl_users
-  WHERE userID = '".$_SESSION["userID"]."'
-  ";
-  $statement = $connect->prepare($query);
-  $statement->execute();
-  $result = $statement->fetchAll();
-
-  $name = '';
-  $fname = '';
-  $lname = '';
-  $addr = '';
-  $email = '';
-  $user_id = '';
-  foreach($result as $row)
-  {
-    $name = $row['username'];
-    $fname = $row['firstName'];
-    $lname = $row['lastName'];
-    $addr = $row['address'];
-    $email = $row['emailAddress'];
-  }
-
   include('header.php');
   ?>
 
