@@ -45,10 +45,12 @@
 							<table class="table table-bordered" id="example1">
 								<thead>
 
-									<th>Payment ID</th>
-									<th>Total Amount</th>
+									<th>Order ID</th>
+									<th>Product Name</th>
 									<!--<th>Payment Type</th>-->
-									<th>Payment Code</th>
+									<th>Price</th>
+                  <th>Quantity</th>
+
 								</thead>
 								<tbody>
 									<?php
@@ -63,26 +65,30 @@
 									}
 									/**$result = $connect->prepare("SELECT * FROM tbl_payment WHERE buyerID=:buyerID ORDER BY paymentID ASC");
 									$result->execute(['buyerID'=>$user['id']]);**/
-									$result = $connect->prepare("SELECT * FROM tbl_order LEFT JOIN tbl_payment ON tbl_order.paymentID = tbl_payment.paymentID WHERE tbl_order.paymentID is not null AND tbl_order.buyerID=".$_SESSION["userID"]."");
+									$result = $connect->prepare("SELECT tbl_order.orderID,tbl_order.quantity,tbl_product.price, tbl_product.productName FROM tbl_order LEFT JOIN tbl_product ON tbl_order.productID = tbl_product.productID WHERE tbl_order.paymentID=".$_GET["s"]."");
 									$result->execute();
 									$rows = $result->fetchAll();
-									$datas = _group_by($rows, 'paymentID');
-
-									foreach($datas as $data){
-										foreach($data as $product){
+                  $total = 0;
+										foreach($rows as $row){
+                      $total += $row['price'] * $row['quantity'];
 											?>
 											<tr>
-												<td><label><a href="orderDetails.php?s=<?php echo $product['paymentID']; ?>" ><?php echo $product['paymentID']; ?></a></label></td>
-												<td><label><?php echo $product['total']; ?></label></td>
-												<!--<td><label><?php echo $product['paymentType']; ?></label></td>-->
-												<td><label><?php echo $product['paymentCode']; ?></label></td>
+												<td><label><?php echo $row['orderID']; ?></label></td>
+												<td><label><?php echo $row['productName']; ?></label></td>
+												<!--<td><label><?php echo $row['paymentType']; ?></label></td>-->
+												<td><label><?php echo $row['price']; ?></label></td>
+                        <td><label><?php echo $row['quantity']; ?></label></td>
+
 											</tr>
 											<?php
 										}
-									}?>
+
+                  ?>
 
 								</tbody>
 							</table>
+
+              <b>TOTAL: PHP</b> <?php echo number_format($total,2) ?>
 						</div>
 					</div>
 				</div>
