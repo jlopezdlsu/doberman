@@ -5,8 +5,8 @@ $username = "";
 $email    = "";
 $errors = array();
 // connect to the database
-  $db = mysqli_connect('localhost', 'root', '', 'db_doberman2');
-  // $db = mysqli_connect('35.240.223.49:3306', 'dobermandb', 'wKue77tk0ovftrik', 'db_doberman');
+  // $db = mysqli_connect('localhost', 'root', '', 'db_doberman2');
+  $db = mysqli_connect('35.240.223.49:3306', 'dobermandb', 'wKue77tk0ovftrik', 'db_doberman');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
