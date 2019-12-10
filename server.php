@@ -43,7 +43,7 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
   	$query = "INSERT INTO tbl_users (username, emailAddress, password, userType)
-  			  VALUES('$username', '$email', '$password', $userType)";
+  			  VALUES('$username', '$email', '$password', '$userType')";
 
   	if(mysqli_query($db, $query)){
     $_SESSION['userID'] = mysqli_insert_id($db);
@@ -53,8 +53,11 @@ if (isset($_POST['reg_user'])) {
   	header('Location: index.php');
   }
   else {
-    mysqli_error($db);
+    echo mysqli_error($db);
   }
+  }
+  else {
+    echo mysqli_error($db);
   }
 }
 // ...
