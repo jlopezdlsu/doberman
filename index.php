@@ -47,7 +47,7 @@
             <div class="owl-item active" style="width: 1110px;"><div class="item">
               <div class="row d-flex flex-row align-items-center">
                 <div class="col-md-6 text">
-                  <h1>Bootstrap&nbsp;4<br>Ecommerce Template</h1>
+                  <h1>Doberman</h1>
                   <p><strong>9 HTML</strong> pages, <strong>SCSS</strong> source files, <strong>7 colour variants</strong></p>
                   <hr>
                   <ul class="list-unstyled props">
