@@ -127,10 +127,30 @@ jQuery(document).ready(function($) {
 					<h3 class="product-price">PHP '.$row['price'].'</h3>
 					<span class="product-available">In Stock</span>
 					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<ul class="product-links">
+					<li><b>Category:</b></li>
+					<li><a href="#">'.$row['categoryName'].'</a></li>
+					</ul>
+					<ul class="product-links">
+					<li><b>RAM:</b></li>
+					<li><a href="#">'.$row['ram'].'</a></li>
+					</ul>
+					<ul class="product-links">
+					<li><b>Storage:</b></li>
+					<li><a href="#">'.$row['storage'].'</a></li>
+					</ul>
+					<ul class="product-links">
+					<li><b>Processor:</b></li>
+					<li><a href="#">'.$row['processor'].'</a></li>
+					</ul>
+					<ul class="product-links">
+					<li><b>Camera:</b></li>
+					<li><a href="#">'.$row['camera'].'</a></li>
+					</ul><br>
+					<p>'.$row['shortDescription'].'</p>
 
 
-					<form method="post" id="buy-form" action="checkout.php?p='.$row['productID'].'#!" style="width:30%;float:left">
+					<form method="post" id="buy-form" action="checkout.php?p='.$row['productID'].'#!" style="width:30% ;float:left">
 						<div class="add-to-cart">
 						<div class="btn-group" style="margin-left: 25px; margin-top: 15px">
 						<button class="add-to-cart-btn pc_data" type="submit" id="'.$row['productID'].'" data-dataid='.$row['productID'].' ><i class="fa fa-money"></i> Buy</button>
@@ -144,10 +164,7 @@ jQuery(document).ready(function($) {
 						</div>
 						</div>
 					</form>
-					<ul class="product-links">
-					<li>Category:</li>
-					<li><a href="#">'.$row['categoryName'].'</a></li>
-					</ul>
+
 					<ul class="product-links">
 					<li>Share:</li>
 					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -166,10 +183,9 @@ jQuery(document).ready(function($) {
 					<div class="col-md-12">
 					<div id="product-tab">
 					<!-- product tab nav -->
-					<ul class="tab-nav">
+					<ul class="nav tab-nav" style="display:block">
 					<li class="active"><a data-toggle="tab" href="#tab1" role="tab">Description</a></li>
-					<li><a data-toggle="tab" href="#tab2" role="tab">Details</a></li>
-					<li><a data-toggle="tab" href="#tab3" role="tab">Reviews (3)</a></li>
+					<li><a data-toggle="tab" href="#tab2" role="tab">Reviews</a></li>
 					</ul>
 					<!-- /product tab nav -->
 					<!-- product tab content -->
@@ -178,22 +194,17 @@ jQuery(document).ready(function($) {
 					<div class="tab-pane active" id="tab1" role="tabpanel">
 					<div class="row">
 					<div class="col-md-12">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+					<p>
+					'.$row['description'].'
+					</p>
 					</div>
 					</div>
 					</div>
 					<!-- /tab1  -->
-					<!-- tab2  -->
-					<div class="tab-pane fade in" id="tab2"  role="tabpanel">
-					<div class="row">
-					<div class="col-md-12">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					</div>
-					</div>
-					<!-- /tab2  -->
+
 					<!-- tab3  -->
-					<div class="tab-pane fade in" id="tab3"  role="tabpanel">
+					<div class="tab-pane fade in" id="tab2"  role="tabpanel">
 					<div class="row">
 					<!-- Rating -->
 					<div class="col-md-3">
@@ -441,8 +452,9 @@ jQuery(document).ready(function($) {
 	<?php include('footer.php') ?>
 </body>
 <script src="js/jquery-1.11.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
 <script src="js/jquery-ui.js"></script>
